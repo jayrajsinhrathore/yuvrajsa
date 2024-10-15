@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कुंवर जयराज सिंह राठौड़</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f0e1;
+            color: #4b3d3d;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        body.dark-theme {
+            background-color: #1a1a1a; /* Darker background */
+            color: #e0e0e0; /* Lighter text color */
+        }
+        header {
+            background: #5c3a29;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            margin: 0;
+            font-size: 3em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .hero {
+            background-image: url('hero-image.jpg');
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            filter: brightness(70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 1s ease-in;
+        }
+        .hero img {
+            max-width: 100%;
+            height: auto;
+            width: auto;
+            max-height: 80%;
+        }
+        .contact-form {
+            background: #eae0d5;
+            padding: 40px;
+            text-align: center;
+            margin: 30px auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            max-width: 800px;
+        }
+        .contact-form h2 {
+            color: #5c3a29;
+            margin-bottom: 20px;
+        }
+        .contact-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #6a5acd;
+            outline: none;
+        }
+        .contact-form button {
+            background-color: #eae0d5;
+            color: #5c3a29;
+            border: 2px solid #5c3a29;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            margin-top: 15px;
+        }
+        .contact-form button:hover {
+            background-color: #5c3a29;
+            color: white;
+        }
+        @media (max-width: 600px) {
+            .contact-form {
+                width: 90%;
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0; /* Reduced padding */
+            background: #5c3a29;
+            color: #fff; /* Light text color for footer */
+        }
+        .footer-text {
+            margin: 0; /* Remove margin */
+            font-size: 1em; /* Reduced font size */
+            color: #fff; /* Ensure footer text is visible */
+        }
+        body.dark-theme footer .footer-text {
+            color: #e0e0e0; /* Lighter text color in dark mode */
+        }
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #5c3a29;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.5em;
+            color: white;
+            padding: 10px;
+            transition: transform 0.3s;
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>कुंवर जयराज सिंह राठौड़</h1>
+</header>
+
+<div class="hero">
+    <img src="lllogo.png" alt="Logo"> <!-- Replace with actual logo URL -->
+</div>
+
+<div class="contact-form">
+    <h2>Contact Us</h2>
+    <form id="contactForm" action="https://formspree.io/f/meoqjlnn" method="POST">
+        <label>
+            Your Name:
+            <input type="text" name="name" required placeholder="Enter your name">
+        </label>
+        <label>
+            Your Email:
+            <input type="email" name="email" required placeholder="Enter your email">
+        </label>
+        <label>
+            Contact Number (optional):
+            <input type="tel" name="contact" placeholder="Enter your contact number">
+        </label>
+        <label>
+            Special Requests:
+            <textarea name="special_requests" placeholder="Any special requests?"></textarea>
+        </label>
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+<footer>
+    <p class="footer-text">&copy; 2024 कुंवर जयराज सिंह राठौड़. सभी अधिकार सुरक्षित।</p>
+</footer>
+
+
+
+</body>
+</html>

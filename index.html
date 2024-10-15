@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कुंवर जयराज सिंह राठौड़</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #f4f0e1;
+            color: #4b3d3d;
+            overflow: hidden;
+            background-image: url('motif.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: background-color 0.5s, color 0.5s;
+            font-size: 1.2em;
+        }
+        .dark-theme {
+            background-color: #181818;
+            color: #e0e0e0;
+        }
+        #splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("flag.jpg") center/cover no-repeat;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+        }
+        #main-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        header {
+            background: #5c3a29;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            margin: 0;
+            font-size: 4em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Cinzel', serif;
+        }
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .hero img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+        .hero img:hover {
+            transform: scale(1.05);
+        }
+        .quote {
+            font-style: italic;
+            text-align: center;
+            margin: 20px auto;
+            font-size: 2em;
+            max-width: 600px;
+            color: #5c3a29;
+            transition: opacity 0.5s;
+        }
+        .button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .button, .royal-button {
+            background-color: #a85c29;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1em;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .button:hover, .royal-button:hover {
+            background-color: #8b4c29;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+        .achievements, .about, .social-icons {
+            background: #eae0d5;
+            padding: 30px;
+            text-align: center;
+            margin: 30px auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            transition: transform 0.3s ease;
+            font-size: 1.3em;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.5s forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .dark-theme .achievements, .dark-theme .about, .dark-theme .social-icons {
+            background: #333;
+            color: #e0e0e0;
+        }
+        .achievements:hover, .about:hover, .social-icons:hover {
+            transform: scale(1.02);
+        }
+        .achievements h2, .about h2, .social-icons h2 {
+            color: #5c3a29;
+            font-size: 3em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #5c3a29;
+            padding-bottom: 10px;
+        }
+        .achievements ul {
+            list-style-type: none; 
+            padding: 0;
+            text-align: left;
+        }
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #5c3a29;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.5em;
+            color: white;
+            padding: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .photo {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 4px solid #5c3a29;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .photo img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-bottom: 4px solid #5c3a29;
+        }
+        .description {
+            padding: 20px;
+            text-align: center;
+            background: #fff;
+            transition: background 0.3s, color 0.3s;
+        }
+        .dark-theme .description {
+            background: #333;
+            color: #e0e0e0;
+        }
+        .description h3 {
+            font-size: 1.8em;
+            color: #5c3a29;
+        }
+        .description p {
+            font-size: 1em;
+            line-height: 1.6;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #5c3a29;
+            color: #fff;
+        }
+        .footer-text {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.5em;
+            color: #5c3a29;
+        }
+        .social-icons {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            margin: 30px auto;
+        }
+        .social-icon {
+            width: 40px; 
+            height: 40px; 
+            margin: 10px; 
+            transition: transform 0.3s;
+        }
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .hero img {
+                max-height: 200px;
+            }
+            .achievements h2, .about h2 {
+                font-size: 2em;
+            }
+            .button, .royal-button {
+                font-size: 0.9em;
+                padding: 8px 16px;
+            }
+            .social-icon {
+                width: 30px; 
+                height: 30px; 
+            }
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="splash">
+    <!-- Splash content can go here -->
+</div>
+
+<div id="main-content">
+    <header>
+        <h1>कुंवर जयराज सिंह राठौड़</h1>
+    </header>
+
+    <div class="hero">
+        <img src="lllogo.png" alt="Your Logo">
+    </div>
+
+    <div class="quote" id="quote"></div>
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HISTORY</title>
+        <style>
+            css {
+                font-family: 'Arial', sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 20px;
+                background-color: white;
+            }
+            .history-section {
+                max-width: 800px;
+                margin: 0 auto;
+                background-color: #eae0d5;
+                border-radius: 10px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+                padding: 30px;
+            }
+            .history-section h1 {
+                text-align: center;
+                color: #5c3a29;
+                font-size: 3em;
+                margin: 0 0 20px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                position: relative;
+            }
+            .history-section h1::after {
+                content: '';
+                display: block;
+                width: 50%;
+                height: 4px;
+                background: #5c3a29;
+                margin: 10px auto;
+                border-radius: 5px;
+            }
+            .history-section p {
+                color: #4b3d3d; /* Text color */
+                margin: 20px 0;
+                line-height: 1.8;
+                text-indent: 20px;
+                display: inline; /* Ensure it flows with the read more link */
+            }
+            .hidden {
+                display: none; /* Initially hidden */
+            }
+            .read-more {
+                display: inline-block;
+                color: #5c3a29;
+                text-decoration: underline;
+                font-size: 1em;
+                cursor: pointer;
+                margin-left: 10px; /* Space between text and link */
+            }
+            .more-about {
+                display: inline-block;
+                margin-top: 30px; /* Increased space above the button */
+                padding: 10px 15px;
+                background-color: #8b4c29;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                text-align: center;
+                font-size: 0.9em; /* Smaller button */
+                width: 50%; /* Centering with width */
+                margin-left: auto;
+                margin-right: auto;
+                transition: background-color 0.3s;
+            }
+            .more-about:hover {
+                background-color: #4b3d3d; /* Darker shade on hover */
+            }
+    
+            /* Responsive adjustments */
+            @media (max-width: 600px) {
+                .history-section h1 {
+                    font-size: 2.5em;
+                }
+                .more-about {
+                    width: 80%; /* Make button wider on smaller screens */
+                }
+            }
+        </style>
+    </head>
+    <body>
+    
+    <div class="history-section">
+        <h1>HISTORY</h1>
+    
+        <p id="intro">
+            Dhandal Rathore had four children: two sons, Buro and Pabuji, and two daughters, Sonalbai and Pemabai. Upon Dhandal’s death, both sons ruled in their village of Kolu. However, Pabuji was a divine incarnation, born from a celestial nymph, who promised to return to him as a mare when he turned twelve. Tensions escalated when Pabuji received the magical mare Kesar Kalami from the goddess Deval, which Khinchi coveted.
+        </p>
+        
+        <span id="full-text" class="hidden">
+            To protect Deval, Pabuji vowed to defend her against Khinchi’s raids. Pabuji overthrew the tyrant Mirza Khan and, after a miraculous rescue by the snake-god Goga, promised his niece Kelam’s hand to him. To secure the marriage, he devised a plan involving a venomous snake bite, leading to a wedding that brought laughter when Pabuji claimed he would plunder she-camels from the demon king Ravana.
+            As he fulfilled his promise, Pabuji defeated Ravana in Lanka and returned with the camels. On the way, he captured the heart of the princess Phulvanti but faced delays due to rivalries over saffron. Eventually, just before his wedding, he was summoned by Deval about Khinchi's theft of her cattle. 
+            Pabuji, abandoning the wedding, rode back to confront the Khinchis. His loyal companion Dhebo, known for his selflessness, met a tragic end in the battle against Khinchi’s army. In a climactic showdown, Pabuji spared Khinchi to protect his sister’s honor, leading to further conflict that resulted in the death of his brother Buro. 
+            Buro's wife, pregnant and desperate, cut her child, Rupnath, from her body to save him. Raised away from his origins, Rupnath eventually learned the truth and sought revenge. Disguised as a holy man, he infiltrated Khinchi’s stronghold and beheaded him. Afterward, he became a sage, dedicating his life to meditation, ensuring the legacy of the Rathores lived on.
+        </span>
+    
+        <span class="read-more" id="readMore">Read More</span> <!-- Toggle text visibility -->
+        <br><br> <!-- Added line breaks for spacing -->
+        <a href="history.html" class="more-about">More About Pabuji Rathore</a> <!-- Updated link -->
+    </div>
+    
+    <script>
+        document.getElementById('readMore').addEventListener('click', function() {
+            const fullText = document.getElementById('full-text');
+            fullText.classList.toggle('hidden'); // Toggle visibility of full text
+            this.textContent = fullText.classList.contains('hidden') ? 'Read More' : 'Read Less'; // Change text
+        });
+    </script>
+    
+    </body>
+    </html>
+     
+    
+
+    
+    <div class="achievements">
+        <h2>Achievements</h2>
+        <ul id="achievement-list">
+            <!-- Achievements will be populated here -->
+        </ul>
+        <button id="language-toggle" class="button" onclick="toggleLanguage()">हिंदी</button>
+    </div>
+
+    <div class="gallery">
+        <div class="photo">
+            <img src="jj.jpg" alt="Royal Prince of Kolu">
+            <div class="description">
+                <h3>Royal Prince of Kolu</h3>
+                <p>The young royal of Kolu is dedicated to community service and cultural heritage, inspiring others through commitment to traditions.</p>
+            </div>
+        </div>
+        <div class="photo">
+            <img src="hhorse.jpg" alt="Equestrian Event">
+            <div class="description">
+                <h3>Equestrian</h3>
+                <p>Highlighting talent in horseback riding, this event fostered sportsmanship and community spirit among youth.</p>
+            </div>
+        </div>
+        <div class="photo">
+            <img src="help.jpg" alt="Educational Workshop">
+            <div class="description">
+                <h3>Educational Workshop</h3>
+                <p>This workshop empowered youth through education, encouraging them to pursue their dreams.</p>
+            </div>
+        </div>
+        <div class="photo">
+            <img src="me.jpg" alt="Cultural Festival">
+            <div class="description">
+                <h3>Cultural Festival</h3>
+                <p>A vibrant festival celebrating local traditions, bringing together the community in joyful celebration.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="about">
+        <h2>About कुंवर जयराज सिंह राठौड़</h2>
+        <p>कुंवर जयराज सिंह राठौड़, पाबूजी राठौड़ के वंशज हैं। वे कोलू क्षेत्र के युवा राजकुमार हैं। जयराज सिंह का लक्ष्य अपने समुदाय की सेवा करना और अपने पूर्वजों की परंपराओं को आगे बढ़ाना है। वे अपनी शिक्षा और सामाजिक कार्यों में सक्रिय रूप से भाग लेते हैं, जिससे वे नई पीढ़ी के लिए प्रेरणा स्रोत बनते हैं। उनका समर्पण और नेतृत्व गुण उन्हें एक आदर्श बनाते हैं।</p>
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Button Example</title>
+            <style>
+                .custom-button {
+                    background-color: #a85c29; /* Button color */
+                    color: white;              /* Text color */
+                    border: none;              /* No border */
+                    padding: 10px 20px;        /* Padding */
+                    font-size: 16px;           /* Font size */
+                    cursor: pointer;           /* Pointer cursor */
+                    border-radius: 4px;       /* Rounded corners */
+                }
+                .custom-button:hover {
+                    background-color: #935029; /* Darker shade on hover */
+                }
+            </style>
+        </head>
+        <body>
+        
+            <button class="custom-button" onclick="window.location.href='about.html'">कुँवर जयराज सिंह राठौड़</button>
+        
+        </body>
+        </html>
+        
+
+    </div>
+
+    <div class="social-icons">
+        <h2>Connect with कुंवर जयराज सिंह</h2>
+        <div style="display: flex; justify-content: center;">
+            <a href="https://www.instagram.com/jayrajsinh__rathore?igsh=MXVjb2dqdXNyenFhag==" target="_blank">
+                <img class="social-icon" src="image-removebg-preview.png" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/jayraj.rathod.5473894?mibextid=LQQJ4d" target="_blank">
+                <img class="social-icon" src="fbfb.png" alt="Facebook">
+            </a>
+            <a href="mailto:Jayraj4743@gmail.com">
+                <img class="social-icon" src="MAIL-removebg-preview.png" alt="Email">
+            </a>
+        </div>
+    </div>
+    
+    <div class="button-container">
+        <a href="contact.html">
+            <button class="royal-button">Contact Us</button>
+        </a>
+    </div>
+
+    <div class="footer-text">
+        <p>कुंवर जयराज सिंह राठौड़</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 कुंवर जयराज सिंह राठौड़. सभी अधिकार सुरक्षित।</p>
+    </footer>
+
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">
+        <img id="theme-icon" src="sun.png" alt="Toggle Theme" width="30" height="30">
+    </button>
+</div>
+
+<script>
+    let quoteIndex = 0;
+
+    const royalQuotes = [
+        "Royal heritage is a legacy of strength and honor.",
+        "Tradition weaves the fabric of our identity.",
+        "In every royal heart beats the spirit of the people.",
+        "Heritage is the bridge that connects us to our roots."
+    ];
+
+    const achievementsEnglish = [
+        "Recipient of the National Youth Award for outstanding community service.",
+        "Recognized for excellence in leadership and community engagement.",
+        "Honored for contributions to cultural preservation.",
+        "Awarded for exemplary service in education and youth empowerment.",
+        "State Champion in Polo, promoting equestrian sports."
+    ];
+
+    const achievementsHindi = [
+        "समुदाय सेवा के लिए राष्ट्रीय युवा पुरस्कार प्राप्तकर्ता।",
+        "नेतृत्व और सामुदायिक जुड़ाव में उत्कृष्टता के लिए मान्यता प्राप्त।",
+        "संस्कृति के संरक्षण में योगदान के लिए सम्मानित।",
+        "शिक्षा और युवा सशक्तीकरण में exemplary सेवा के लिए पुरस्कारित।",
+        "पोलो में राज्य चैंपियन, घुड़सवारी खेलों को बढ़ावा देना।"
+    ];
+
+    let isHindi = false;
+    let isDarkTheme = false;
+
+    window.onload = function() {
+        const splash = document.getElementById('splash');
+        const mainContent = document.getElementById('main-content');
+        const quoteElement = document.getElementById('quote');
+        const achievementList = document.getElementById('achievement-list');
+
+        setTimeout(() => {
+            splash.style.opacity = 0;
+            setTimeout(() => {
+                splash.style.display = 'none';
+                mainContent.style.display = 'block';
+                mainContent.style.opacity = 1; // Fade in main content
+                document.body.style.overflow = 'auto';
+                rotateQuote();
+                displayAchievements();
+            }, 1000);
+        }, 50);
+    };
+
+    function rotateQuote() {
+        const quoteElement = document.getElementById('quote');
+        quoteElement.textContent = royalQuotes[quoteIndex];
+        quoteElement.style.opacity = 0;
+
+        setTimeout(() => {
+            quoteElement.style.opacity = 1;
+            quoteIndex = (quoteIndex + 1) % royalQuotes.length;
+        }, 500);
+
+        setTimeout(rotateQuote, 4000);
+    }
+
+    function displayAchievements() {
+        const achievementList = document.getElementById('achievement-list');
+        achievementList.innerHTML = '';
+
+        const achievements = isHindi ? achievementsHindi : achievementsEnglish;
+        achievements.forEach(achievement => {
+            const listItem = document.createElement('li');
+            listItem.textContent = achievement;
+            achievementList.appendChild(listItem);
+        });
+    }
+
+    function toggleTheme() {
+        isDarkTheme = !isDarkTheme;
+        document.body.classList.toggle('dark-theme');
+        const themeIcon = document.getElementById('theme-icon');
+        themeIcon.src = isDarkTheme ? 'moon.png' : 'sun.png';
+    }
+
+    function toggleLanguage() {
+        isHindi = !isHindi;
+        displayAchievements();
+        document.getElementById('language-toggle').textContent = isHindi ? "English" : "हिंदी";
+    }
+</script>
+
+</body>
+</html>

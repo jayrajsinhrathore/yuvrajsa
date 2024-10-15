@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pabuji's Legendary Saga</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #4b3d3d;
+            scroll-behavior: smooth;
+        }
+        h1 {
+            text-align: center;
+            color: #5c3a29;
+            font-family: 'Cinzel', serif;
+            font-size: 48px;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        img.logo {
+            display: block;
+            margin: 0 auto 20px;
+            max-width: 250px; /* Increased logo size */
+        }
+        .history-section, .album-section {
+            background: #eae0d5;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .history-section:hover, .album-section:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+        }
+        .toggle-button {
+            display: block;
+            margin: 0 auto 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #8b4c29;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .toggle-button:hover {
+            background-color: #7b3c29;
+            transform: scale(1.05);
+        }
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 30px;
+            color: #4b3d3d;
+            margin-bottom: 15px;
+        }
+        p {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .album-section {
+            padding: 15px;
+            background: #ffffff;
+            border-radius: 10px;
+        }
+        .gallery-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .gallery-images img {
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .gallery-images img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 5px solid #fff;
+            border-radius: 10px;
+            animation: zoom 0.3s forwards;
+        }
+        @keyframes zoom {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+        @media (max-width: 768px) {
+            .gallery-images {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .gallery-images {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Pabuji's Legendary Saga</h1>
+<img src="lllogo.png" alt="Logo" class="logo">
+
+<div class="history-section">
+    <button id="toggle-button" class="toggle-button" onclick="toggleLanguage()">Hindi</button>
+    
+    <div id="english-text" class="text-content" style="display: block;">
+        <h2>History 1: The Rise of Pabuji</h2>
+        <p>
+            Pabuji Rathore was born in 1239 CE in Kolumand. His father's name was Dhandhli Rathore. As he grew up, a coconut was sent from Amarkot for his engagement. Pabuji had a sister named Deval, who possessed a magnificent horse named Kesar Kalni. Deval used this horse to guard her cattle. Jindr Rao Khinchi also coveted this horse, leading to a rift between him and Pabuji. During the wedding, Pabuji requested Deval for the horse. Despite warning him about Jindr Rao's intentions, Pabuji promised to protect it. Deval entrusted him with the horse, and the wedding party proceeded to Amarkot. Jindr Rao seized the opportunity to steal Deval's cow. When Pabuji was taking his vows, he learned of Jindr Rao's misdeed. Without hesitation, he abandoned the wedding vows, mounted Kesar Kalni, and pursued Jindr Rao. Tragically, Pabuji Maharaj attained martyrdom in this quest.
+        </p>
+
+        <h2>History 2: A Folk-Deity's Journey</h2>
+        <p>
+            Pabuji is worshipped as a folk-deity, believed to have lived in the 14th century in the remote village of Kulu, Rajasthan. Dhadal Rathore, from Kolu, had four children: two sons, Buro and Pabuji, and two daughters, Sona and Pema. Legend has it that Pabuji was born to a nymph, who foretold her return after 12 years as a mare. In his youth, Pabuji fought against the Khici clan, evicting them from his land and defeating their leader, Jindrav Khinchi. He acquired a black horse from Lady Daval, believed to be the reborn form of his mother.
+        </p>
+        <p>
+            A significant event in Pabuji’s life was the marriage of his beloved niece, Kelam, to Gogaji, a snake deity. At this wedding, while guests offered lavish gifts, Pabuji promised camels from Lanka. After defeating Ravana, the local ruler, he returned triumphantly with the camels. On his way back, Pabuji fell in love with Princess Pulvati of Umarkot and married her after much persuasion.
+        </p>
+
+        <h2>History 3: Pabuji Ki Phad</h2>
+        <p>
+            Pabuji Ki Phad is a vibrant scroll painting of folk deities, integral to the only surviving ancient traditional art form in Rajasthan. The Bhopas of Pabusar, bards and priests, narrate the epic of Pabuji through this art. The Phad, or "Par," visually chronicles different stages of Pabuji's life: his lineage, birth, marriage, battles, and adventures. This artistic tradition was recognized by UNESCO as a part of the World Heritage list.
+        </p>
+    </div>
+
+    <div id="hindi-text" class="text-content" style="display: none;">
+        <h2>इतिहास 1: पाबूजी का उदय</h2>
+        <p>
+            पाबूजी राठौड़ का जन्म 1239 ई. में कोलूमंड में हुआ। इनके पिता का नाम धांधली राठौर था। जब पाबूजी युवा हुए, तो अमरकोट से सगाई का नारियल भेजा गया। पाबूजी की एक बहन थी, देवल, जिसकी पास एक शानदार घोड़ी थी, जिसका नाम केसर कालनी था। जींद राव खींची ने इस घोड़ी को पाने की कोशिश की, जिससे पाबूजी और जींद राव के बीच विवाद हुआ। शादी के दौरान, पाबूजी ने देवल से घोड़ी मांगी। जींद राव की मंशा के बारे में चेतावनी देने के बावजूद, पाबूजी ने उसकी रक्षा करने का वादा किया। देवल ने घोड़ी उन्हें सौंप दी और शादी का कार्यक्रम अमरकोट के लिए बढ़ा। जींद राव ने देवल की गाय को चुराने का प्रयास किया। जब पाबूजी अपने वादे ले रहे थे, उन्होंने जींद राव के कृत्य के बारे में सुना। उन्होंने बिना कोई समय गंवाए, शादी की रस्में छोड़कर, केसर कालनी पर सवार होकर जींद राव का पीछा किया। दुख की बात है कि पाबूजी महाराज इस कार्य में शहीद हो गए।
+        </p>
+
+        <h2>इतिहास 2: एक लोक देवी की यात्रा</h2>
+        <p>
+            पाबूजी को एक लोक देवी के रूप में पूजा जाता है, जो 14वीं सदी में राजस्थान के कूलू नामक एक दूरस्थ गांव में रहने के लिए जाने जाते हैं। धाधल राठौर के चार बच्चे थे: दो बेटे, बुरो और पाबूजी, और दो बेटियाँ, सोना और पेमा। कहा जाता है कि पाबूजी का जन्म एक निपुण देवी से हुआ था, जिसने 12 साल बाद घोड़ी के रूप में लौटने की भविष्यवाणी की थी। युवा अवस्था में, पाबूजी ने खींची कबीले के खिलाफ लड़ाई की और अपने क्षेत्र से उन्हें निकाला।
+        </p>
+        <p>
+            पाबूजी के जीवन में एक महत्वपूर्ण घटना उनकी प्रिय भतीजी, केलम की गोगाजी, एक नाग देवता से हुई शादी थी। इस शादी में, जबकि मेहमानों ने शानदार उपहार दिए, पाबूजी ने लंका से ऊंट लाने का वादा किया। रावण को हराकर, उन्होंने विजयी होकर ऊंटों का झुंड लौटाया।
+        </p>
+
+        <h2>इतिहास 3: पाबूजी की फड़</h2>
+        <p>
+            पाबूजी की फड़ एक जीवंत चित्रण है, जो लोक देवताओं की पूजा में महत्वपूर्ण है। पाबूसी के भोपे, जो गायक और पुजारी हैं, इस कला के माध्यम से पाबूजी की महाकथा सुनाते हैं। फड़, या "पर," पाबूजी के जीवन के विभिन्न चरणों को चित्रित करता है: उनका वंश, जन्म, विवाह, युद्ध, और साहसिकता।
+        </p>
+    </div>
+</div>
+
+<div class="album-section">
+    <h2>Gallery</h2>
+    <p>Explore the vibrant representations of Pabuji's legacy through these stunning visuals.</p>
+    <div class="gallery-images">
+        <img src="pabuji 1.jpeg" alt="Pabuji Image 1" onclick="openLightbox(this)">
+        <img src="pabuji 4.jpeg" alt="Pabuji Image 2" onclick="openLightbox(this)">
+        <img src="pabuji 5.jpeg" alt="Pabuji Image 3" onclick="openLightbox(this)">
+        <img src="pabuji 3.jpeg" alt="Pabuji Image 4" onclick="openLightbox(this)">
+        <img src="pabuji 2.jpeg" alt="Pabuji Image 5" onclick="openLightbox(this)">
+        <img src="pabuji 6.jpeg" alt="Pabuji Image 6" onclick="openLightbox(this)">
+    </div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Lightbox Image">
+</div>
+
+<footer>
+    &copy; 2024 कुंवर जयराज सिंह राठौड़. सभी अधिकार सुरक्षित।
+</footer>
+
+<script>
+    function toggleLanguage() {
+        const englishText = document.getElementById("english-text");
+        const hindiText = document.getElementById("hindi-text");
+        const button = document.getElementById("toggle-button");
+
+        if (englishText.style.display === "block") {
+            englishText.style.display = "none";
+            hindiText.style.display = "block";
+            button.textContent = "English"; 
+        } else {
+            englishText.style.display = "block";
+            hindiText.style.display = "none";
+            button.textContent = "Hindi"; 
+        }
+    }
+
+    function openLightbox(image) {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        lightboxImg.src = image.src;
+        lightbox.style.display = "flex";
+    }
+
+    function closeLightbox() {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.style.display = "none";
+    }
+</script>
+
+</body>
+</html>
